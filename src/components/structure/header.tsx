@@ -1,5 +1,6 @@
 import { useEffect, useState } from "preact/hooks";
 
+import logo from "../../assets/nexo-logo.png"
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,7 +29,7 @@ export default function Navbar() {
     >
       <div class="max-w-6xl mx-auto px-6 flex justify-between items-center py-5">
         <span class="flex flex-row gap-4 items-center">
-          <img src="/src/assets/nexo-logo.png" alt="" class="w-10" />
+          <img src={logo.src} alt="Logo nexo digital"  class="w-10" />
         <h1 class="text-3xl font-bold tracking-tight text-[#0f172b]">Nexo <span class=" text-blue-600">Digital</span></h1>
         </span>
         
