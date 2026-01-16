@@ -1,0 +1,70 @@
+---
+import { solutions } from "../data/utils";
+import { Zap, BarChart3, ShieldCheck } from "@lucide/astro";
+
+/**
+ * Map “string” -> componente Astro real
+ * (Esto es lo correcto con @lucide/astro)
+ */
+const iconMap = {
+  Zap,
+  BarChart3,
+  ShieldCheck,
+} as const;
+
+// Tipo: solo claves válidas del map
+type IconKey = keyof typeof iconMap;
+---
+
+<section class="py-20 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6">
+        <h2 class="text-3xl font-bold">¿Te sientes identificado?</h2>
+
+        <ul class="space-y-4">
+          {[
+            "Pierdes mucho tiempo en tareas manuales repetitivas.",
+            "Tu competencia se ve más moderna y profesional que tú.",
+            "No tienes control real de tus datos o clientes.",
+            "Tu web actual es lenta y no te trae prospectos.",
+          ].map((item) => (
+            <li class="flex gap-3 text-slate-600 italic">
+              <span class="text-red-400 font-bold">✕</span> {item}
+            </li>
+          ))}
+        </ul>
+
+        <div class="p-6 bg-blue-600 rounded-2xl text-white">
+          <p class="font-bold text-lg mb-2 italic">
+            Mi misión es eliminar estos obstáculos para que te enfoques en lo que mejor sabes hacer: dirigir tu negocio.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 gap-4">
+        {solutions.map((sol) => {
+          const IconComp = iconMap[sol.icon as IconKey];
+
+          return (
+            <div class="p-6 border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-shadow bg-slate-50">
+              <div class="flex items-center gap-4 mb-3">
+                <div class="p-2 bg-white rounded-lg shadow-sm">
+                  <IconComp class={sol.iconStyle} />
+                </div>
+
+                <span class="text-sm font-bold text-blue-600 uppercase tracking-wider">
+                  {sol.benefit}
+                </span>
+              </div>
+
+              <h3 class="text-xl font-bold mb-2">{sol.title}</h3>
+              <p class="text-slate-600">{sol.description}</p>
+            </div>
+          );
+        })}
+        
+      </div>
+    </div>
+  </div>
+</section>

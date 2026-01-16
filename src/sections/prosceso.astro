@@ -1,0 +1,52 @@
+---
+import { steps } from "../data/utils";
+import {
+  MessageSquare,
+  Layers,
+  Zap,
+  Rocket,
+} from "@lucide/astro";
+
+const iconMap = {
+  MessageSquare,
+  Layers,
+  Zap,
+  Rocket,
+} as const;
+
+type IconKey = keyof typeof iconMap;
+---
+
+<section id="proceso" class="py-20 bg-slate-900 text-white">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-16">
+      Trabajar conmigo es muy sencillo
+    </h2>
+
+    <div class="grid md:grid-cols-4 gap-8">
+      {steps.map((item, i) => {
+        const IconComp = iconMap[item.icon as IconKey];
+
+        return (
+          <div class="relative group">
+            <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 font-bold text-xl shadow-lg group-hover:scale-110 transition-transform">
+              <IconComp class="w-6 h-6 text-white" />
+            </div>
+
+            <h3 class="text-xl font-bold mb-2">
+              {item.title}
+            </h3>
+
+            <p class="text-slate-400 text-sm leading-relaxed">
+              {item.desc}
+            </p>
+
+            {i < steps.length - 1 && (
+              <div class="hidden md:block absolute top-8 left-[60%] w-full border-t border-dashed border-slate-700 -z-10"></div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

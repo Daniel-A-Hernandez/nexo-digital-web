@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+:target {
+  scroll-margin-top: 7rem;
+}
+html{
+    scroll-behavior: smooth;
+    animation: 1s ease-in-out;
+}
