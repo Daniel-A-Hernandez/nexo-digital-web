@@ -1,16 +1,35 @@
 ---
+const title = "Nexo Digital | Eficiencia y Rentabilidad con Tecnología";
+const description = "No solo hago páginas web; construyo herramientas digitales para que tu empresa deje de perder tiempo y empiece a crecer. Automatización y ventas 24/7.";
+const canonicalURL = new URL(Astro.url.pathname, "https://nexo-digital-web.pages.dev/");
+const ogImage = "/og-image.png"; // Crea una imagen de 1200x630 y ponla en public/
 import "@/styles/reveals.css";
-
-const title = "Nexo Digital ";
 ---
 
 <html lang="es">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="generator" content={Astro.generator} />
-        <link rel="shortcut icon" href="favicon(1).ico" type="image/x-icon">
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
         <title>{title}</title>
+        <meta name="title" content={title} />
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalURL} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={new URL(ogImage, canonicalURL)} />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={canonicalURL} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content={new URL(ogImage, canonicalURL)} />
     </head>
     <body class="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100">
         <main>

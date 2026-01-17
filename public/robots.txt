@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Esto le dice a Google dónde encontrar todas tus páginas de golpe
+Sitemap: https://nexo-digital-web.pages.dev/sitemap-index.xml
