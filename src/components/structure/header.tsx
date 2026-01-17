@@ -1,5 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
-import logo from "../../assets/nexo-logo.png";
+import logo from "@/assets/nexo-logo.png";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -22,17 +22,15 @@ export default function Navbar() {
 
   return (
     <nav
-      class={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/90 backdrop-blur-md shadow-sm py-3"
-          : "bg-transparent py-5"
+      class={`fixed w-full z-50 transition-all duration-300 bg-white border-b border-slate-100 ${
+        isScrolled ? "shadow-sm" : ""
       }`}
     >
-      <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
-        {/* Logo -> Home */}
+      <div class="max-w-6xl mx-auto px-6 flex justify-between items-center py-4">
+        {/* Logo */}
         <a
           href="/"
-          class="flex flex-row gap-4 items-center rounded-xl  "
+          class="flex items-center gap-4 rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-200"
           aria-label="Ir al inicio"
         >
           <img src={logo.src} alt="Logo Nexo Digital" class="w-10" />
@@ -41,29 +39,28 @@ export default function Navbar() {
           </span>
         </a>
 
-        {/* Desktop */}
+        {/* Desktop menu */}
         <div class="hidden sm:flex items-center gap-2">
           <a
-            href="#proceso"
-            class="group relative rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors "
+            href="/proyectos"
+            class="group relative rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors"
           >
-            ¿Cómo trabajo?
+            Trabajos
             <span class="absolute left-3 right-3 -bottom-0.5 h-[2px] origin-left scale-x-0 bg-blue-600 transition-transform duration-200 group-hover:scale-x-100" />
           </a>
 
           <a
-            href="/proyectos"
-            class="ml-2 inline-flex items-center justify-center rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition
-                   hover:bg-blue-700 hover:shadow-md active:translate-y-[1px]
-                   "
+            href="/form"
+            class="group relative rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors"
           >
-            Trabajos
+            Cotiza tu proyecto
+            <span class="absolute left-3 right-3 -bottom-0.5 h-[2px] origin-left scale-x-0 bg-blue-600 transition-transform duration-200 group-hover:scale-x-100" />
           </a>
         </div>
 
-        {/* Mobile button */}
+        {/* Mobile toggle */}
         <button
-          class="sm:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 bg-white/70 backdrop-blur hover:bg-white transition
+          class="sm:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition
                  focus:outline-none focus:ring-4 focus:ring-blue-200"
           aria-label="Abrir menú"
           aria-expanded={open}
@@ -89,31 +86,42 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu – clásico */}
       <div
-        class={`sm:hidden px-6 transition-all duration-200 ${
-          open ? "max-h-48 opacity-100 pb-4" : "max-h-0 opacity-0 overflow-hidden"
+        class={`sm:hidden transition-all duration-200 ${
+          open ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
-        <div class="mt-3 rounded-2xl bg-white/90 backdrop-blur border border-slate-200 p-2 flex flex-col gap-1">
-          <a
-            href="#proceso"
-            class="rounded-xl px-3 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50 active:bg-slate-100 transition
-                   focus:outline-none focus:ring-4 focus:ring-blue-200"
-            onClick={() => setOpen(false)}
+        <div class="px-6 pb-4">
+          <div
+            class={`overflow-hidden rounded-xl border border-slate-200 bg-white shadow-lg transition-all duration-200 ${
+              open ? "max-h-64 translate-y-0" : "max-h-0 -translate-y-1"
+            }`}
           >
-            ¿Cómo trabajo?
-          </a>
+            <ul class="flex flex-col divide-y divide-slate-100">
+              <li>
+                <a
+                  href="/proyectos"
+                  class="flex w-full items-center justify-between px-4 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50"
+                  onClick={() => setOpen(false)}
+                >
+                  Trabajos
+                  <span class="text-slate-400">→</span>
+                </a>
+              </li>
 
-          <a
-            href="#trabajos"
-            class="mt-1 inline-flex items-center justify-center rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-sm transition
-                   hover:bg-blue-700 hover:shadow-md active:translate-y-[1px]
-                   focus:outline-none focus:ring-4 focus:ring-blue-200"
-            onClick={() => setOpen(false)}
-          >
-            Ver trabajos
-          </a>
+              <li>
+                <a
+                  href="/form"
+                  class="flex w-full items-center justify-between px-4 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50"
+                  onClick={() => setOpen(false)}
+                >
+                  Cotiza tu proyecto
+                  <span class="text-slate-400">→</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
