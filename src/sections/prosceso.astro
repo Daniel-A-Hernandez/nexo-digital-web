@@ -28,8 +28,12 @@ type IconKey = keyof typeof iconMap;
         const IconComp = iconMap[item.icon as IconKey];
 
         return (
-          <div class="relative group">
-            <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 font-bold text-xl shadow-lg group-hover:scale-110 transition-transform">
+          <div class="relative group" data-reveal>
+            <div
+            class=" reveal reveal--scale w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 font-bold text-xl shadow-lg group-hover:scale-110 transition-transform"
+            style={item.revealIcon}
+            data-reveal 
+            >
               <IconComp class="w-6 h-6 text-white" />
             </div>
 

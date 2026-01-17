@@ -4,12 +4,14 @@ export type Solution = {
   description: string;
   icon: "Zap" | "BarChart3" | "ShieldCheck";
   iconStyle:string;
+  reveal:string;
 };
 export type Step = {
   step: "1" | "2" | "3" | "4";
   title: string;
   desc: string;
   icon: "MessageSquare" | "Layers" | "Zap" | "Rocket";
+  revealIcon:string
 };
 
 
@@ -20,7 +22,8 @@ export const solutions: Solution[] = [
     description:
       "Creamos plataformas de venta online que no solo se ven bien, sino que están diseñadas para convertir visitas en clientes reales.",
     icon: "Zap",
-    iconStyle:"w-6 h-6 text-yellow-500"
+    iconStyle:"w-6 h-6 text-yellow-500",
+    reveal: "transition-delay: 0s"
   },
   {
     title: "Automatiza tu desorden",
@@ -28,7 +31,8 @@ export const solutions: Solution[] = [
     description:
       "Sustituimos tus excels infinitos por sistemas que gestionan tus inventarios, clientes y pedidos de forma automática.",
     icon: "BarChart3",
-    iconStyle:"w-6 h-6 text-green-500"
+    iconStyle:"w-6 h-6 text-green-500",
+    reveal:"transition-delay: .3s",
   },
   {
     title: "Presencia Profesional",
@@ -36,7 +40,8 @@ export const solutions: Solution[] = [
     description:
       "Una imagen digital sólida que te posiciona como líder en tu sector frente a tu competencia.",
     icon: "ShieldCheck",
-    iconStyle:"w-6 h-6 text-blue-500"
+    iconStyle:"w-6 h-6 text-blue-500",
+    reveal:"transition-delay:.6s",
   },
 ];
 
@@ -48,24 +53,29 @@ export const steps: Step[] = [
     title: "Charla Inicial",
     desc: "Entiendo tu negocio y tus cuellos de botella.",
     icon: "MessageSquare",
+    revealIcon: "transition-delay: .0s"
   },
   {
     step: "2",
     title: "Propuesta",
     desc: "Diseño la solución técnica que mejor se adapta a tu presupuesto.",
     icon: "Layers",
+    revealIcon: "transition-delay: .2s"
   },
   {
     step: "3",
     title: "Desarrollo",
     desc: "Construyo tu sistema mientras ves los avances en tiempo real.",
     icon: "Zap",
+    revealIcon:"transition-delay: .4s"
   },
   {
     step: "4",
     title: "Lanzamiento",
     desc: "Pongo todo en marcha y te enseño a usarlo.",
     icon: "Rocket",
+    revealIcon:"transition-delay: .6s"
+
   },
 ];
 

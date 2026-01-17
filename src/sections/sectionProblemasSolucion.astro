@@ -18,7 +18,7 @@ type IconKey = keyof typeof iconMap;
 
 <section class="py-20 px-6">
   <div class="max-w-6xl mx-auto">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
+    <div class="reveal reveal--left grid md:grid-cols-2 gap-12 items-center" data-reveal="">
       <div class="space-y-6">
         <h2 class="text-3xl font-bold">¿Te sientes identificado?</h2>
 
@@ -47,7 +47,10 @@ type IconKey = keyof typeof iconMap;
           const IconComp = iconMap[sol.icon as IconKey];
 
           return (
-            <div class="p-6 border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-shadow bg-slate-50">
+            <div 
+            class="reveal reveal--right p-6 border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-shadow bg-slate-50" data-reveal
+            style={sol.reveal}
+            >
               <div class="flex items-center gap-4 mb-3">
                 <div class="p-2 bg-white rounded-lg shadow-sm">
                   <IconComp class={sol.iconStyle} />
