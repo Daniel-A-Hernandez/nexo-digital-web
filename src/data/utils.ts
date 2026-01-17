@@ -32,7 +32,7 @@ export const solutions: Solution[] = [
       "Sustituimos tus excels infinitos por sistemas que gestionan tus inventarios, clientes y pedidos de forma automática.",
     icon: "BarChart3",
     iconStyle:"w-6 h-6 text-green-500",
-    reveal:"transition-delay: .3s",
+    reveal:"transition-delay: .2s",
   },
   {
     title: "Presencia Profesional",
@@ -41,7 +41,7 @@ export const solutions: Solution[] = [
       "Una imagen digital sólida que te posiciona como líder en tu sector frente a tu competencia.",
     icon: "ShieldCheck",
     iconStyle:"w-6 h-6 text-blue-500",
-    reveal:"transition-delay:.6s",
+    reveal:"transition-delay:.3s",
   },
 ];
 
@@ -74,7 +74,7 @@ export const steps: Step[] = [
     title: "Lanzamiento",
     desc: "Pongo todo en marcha y te enseño a usarlo.",
     icon: "Rocket",
-    revealIcon:"transition-delay: .6s"
+    revealIcon:"transition-delay: .5s"
 
   },
 ];
@@ -88,50 +88,11 @@ export const proyects = [
     problem:"Pedidos por WhatsApp gestionados manualmente, generando retrasos y errores.",
     solution: "Sistema de pedidos que genera órdenes automáticas de WhatsApp desde un menú digital.",
     link:"/proyectos/tacoExpress",
-    img:""
+    img:"../../src/assets/taco-express.jpg",
+    badge:"Restaurante"
     
     
-  },
-  {
-    id:1,
-    name: "Restaurante Taco Express",
-    problem:"Los pedidos llegaban por WhatsApp, pero se procesaban manualmente, provocando retrasos, confusión en las órdenes y pérdida de tiempo operativo.",
-    solution: "Se implementó un sistema de pedidos digital que convierte la selección del cliente en un mensaje automático y estructurado de WhatsApp, agilizando la atención y reduciendo errores operativos en Taco Express.",
-    link:"/taco-express",
-    img:""
-    
-    
-  },
-  {
-    id:1,
-    name: "Restaurante Taco Express",
-    problem:"Los pedidos llegaban por WhatsApp, pero se procesaban manualmente, provocando retrasos, confusión en las órdenes y pérdida de tiempo operativo.",
-    solution: "Se implementó un sistema de pedidos digital que convierte la selección del cliente en un mensaje automático y estructurado de WhatsApp, agilizando la atención y reduciendo errores operativos en Taco Express.",
-    link:"/taco-express",
-    img:""
-    
-    
-  },
-  {
-    id:1,
-    name: "Restaurante Taco Express",
-    problem:"Los pedidos llegaban por WhatsApp, pero se procesaban manualmente, provocando retrasos, confusión en las órdenes y pérdida de tiempo operativo.",
-    solution: "Se implementó un sistema de pedidos digital que convierte la selección del cliente en un mensaje automático y estructurado de WhatsApp, agilizando la atención y reduciendo errores operativos en Taco Express.",
-    link:"/taco-express",
-    img:""
-    
-    
-  },
-  {
-    id:1,
-    name: "Restaurante Taco Express",
-    problem:"Los pedidos llegaban por WhatsApp, pero se procesaban manualmente, provocando retrasos, confusión en las órdenes y pérdida de tiempo operativo.",
-    solution: "Se implementó un sistema de pedidos digital que convierte la selección del cliente en un mensaje automático y estructurado de WhatsApp, agilizando la atención y reduciendo errores operativos en Taco Express.",
-    link:"",
-    img:""
-    
-    
-  },
+  }
   
   
 

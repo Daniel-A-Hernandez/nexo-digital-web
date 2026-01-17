@@ -1,0 +1,276 @@
+---
+const FORM_ENDPOINT = "https://formspree.io/f/mgoooblp"; // <-- pega tu endpoint
+const WHATSAPP_NUMBER = "50375138755"; // <-- tu número sin +
+import "@/styles/global.css";
+import Header from "@/components/structure/header"
+import { ArrowRight } from "@lucide/astro";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diagnóstico gratuito | Nexo Digital</title>
+    <meta
+      name="description"
+      content="Responde 5 preguntas y recibe una recomendación clara para digitalizar tu negocio. Sin compromiso."
+    />
+  </head>
+  <Header client:load/>
+  <body class="min-h-screen bg-[#f8fafc]">
+    <main class="mx-auto max-w-5xl px-6 py-16">
+      <!-- Header -->
+        <div class="flex flex-col justify-center items-center p-10">
+            <h1 class="mt-6 text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">Cuéntame sobre tu negocio</h1>
+            <p class="mt-3 max-w-2xl text-slate-600">Responde estas preguntas y te enviaré una recomendación clara. El canal principal es por email, y WhatsApp es opcional.
+            </p>
+        </div>
+    </div>
+
+      <!-- Card -->
+      <section class="mx-auto max-w-3xl rounded-3xl border border-slate-200 bg-white p-8 shadow-[0_25px_60px_-25px_rgba(0,0,0,0.25)]">
+        <form
+          id="diagnosticForm"
+          action={FORM_ENDPOINT}
+          method="POST"
+          class="grid gap-6"
+        >
+          <!-- Formspree helpers -->
+          <input type="hidden" name="_subject" value="Nuevo diagnóstico — Nexo Digital" />
+          <input type="hidden" name="_template" value="table" />
+
+          <!-- 1) Tipo de negocio -->
+             <span class="mt-6  inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-1 text-xs font-semibold text-blue-700 ring-1 ring-blue-100">
+                <span class="h-2 w-2 rounded-full bg-blue-600"></span>
+                Diagnóstico sin compromiso
+            </span>
+          <div>
+            <label class="text-sm font-semibold text-slate-800">
+              1) ¿Qué tipo de negocio tienes?
+            </label>
+            <select
+              name="Tipo de negocio"
+              required
+              class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 shadow-sm outline-none transition focus:border-blue-300 focus:ring-4 focus:ring-blue-100"
+            >
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option>Restaurante</option>
+              <option>Tienda / ecommerce</option>
+              <option>Servicios</option>
+              <option>Salud / belleza</option>
+              <option>Otro</option>
+            </select>
+          </div>
+
+          <!-- 2) Objetivos -->
+          <fieldset>
+            <legend class="text-sm font-semibold text-slate-800">
+              2) ¿Qué quieres lograr con tecnología?
+            </legend>
+            <div class="mt-2 grid gap-2 sm:grid-cols-2">
+              {[
+                "Más ventas",
+                "Pedidos / reservas",
+                "Mejor imagen profesional",
+                "Automatizar procesos",
+                "Panel administrativo",
+                "Otro",
+              ].map((item) => (
+                <label class="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50">
+                  <input type="checkbox" name="Objetivo" value={item} class="h-4 w-4 accent-blue-600" />
+                  {item}
+                </label>
+              ))}
+            </div>
+            <p class="mt-2 text-xs text-slate-500">Tip: marca todo lo que aplique.</p>
+          </fieldset>
+
+          <!-- 3) Estado actual -->
+          <fieldset>
+            <legend class="text-sm font-semibold text-slate-800">3) ¿Qué tienes actualmente?</legend>
+            <div class="mt-2 grid gap-2 sm:grid-cols-2">
+              {["Nada", "Solo redes sociales", "Sitio web", "Sistema interno"].map((item) => (
+                <label class="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50">
+                  <input type="radio" name="Estado actual" value={item} required class="h-4 w-4 accent-blue-600" />
+                  {item}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <!-- 4) Urgencia -->
+          <fieldset>
+            <legend class="text-sm font-semibold text-slate-800">4) ¿Qué tan urgente es?</legend>
+            <div class="mt-2 grid gap-2 sm:grid-cols-3">
+              {["Quiero empezar ya", "En 1–2 meses", "Solo estoy evaluando"].map((item) => (
+                <label class="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50">
+                  <input type="radio" name="Urgencia" value={item} required class="h-4 w-4 accent-blue-600" />
+                  {item}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <!-- 5) Contacto -->
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="text-sm font-semibold text-slate-800">5) Datos de contacto</p>
+                <p class="mt-1 text-xs text-slate-500">Te responderé por el medio que elijas.</p>
+              </div>
+
+              <span class="inline-flex items-center rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-slate-600 ring-1 ring-slate-200">
+                Email recomendado
+              </span>
+            </div>
+
+            <div class="mt-4 grid gap-4 sm:grid-cols-2">
+              <div>
+                <label class="text-xs font-semibold text-slate-600">Tu nombre</label>
+                <input
+                  name="Nombre"
+                  required
+                  minlength="2"
+                  placeholder="Ej: Daniel"
+                  class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm outline-none focus:ring-4 focus:ring-blue-100"
+                />
+              </div>
+
+              <div>
+                <label class="text-xs font-semibold text-slate-600">¿Cómo prefieres que te contacte?</label>
+                <select
+                  id="contactPreference"
+                  name="Preferencia de contacto"
+                  class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm outline-none focus:ring-4 focus:ring-blue-100"
+                >
+                  <option value="email" selected>Email</option>
+                  <option value="whatsapp">WhatsApp</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mt-4 grid gap-4 sm:grid-cols-2">
+              <div>
+                <label id="contactValueLabel" class="text-xs font-semibold text-slate-600">Tu email</label>
+                <input
+                  id="contactValue"
+                  name="Contacto"
+                  required
+                  placeholder="correo@dominio.com"
+                  type="email"
+                  class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm outline-none focus:ring-4 focus:ring-blue-100"
+                />
+              </div>
+
+              <div>
+                <label class="text-xs font-semibold text-slate-600">Notas (opcional)</label>
+                <textarea
+                  name="Notas"
+                  rows="1"
+                  placeholder="Ej: Quiero pedidos por WhatsApp y un panel para cambiar precios."
+                  class="mt-2 min-h-[78px] w-full resize-y rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm outline-none focus:ring-4 focus:ring-blue-100"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="grid place-content-center place-items-center mt-2  gap-3 ">
+            <button
+              type="submit"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-blue-600 px-6 py-4 text-sm font-bold text-white shadow-lg transition hover:bg-blue-700"
+            >
+              Enviar diagnóstico <ArrowRight size={20}/>
+            </button>
+          </div>
+
+          <p class="text-center text-xs text-slate-500">
+            Recibirás respuesta por el canal elegido. WhatsApp es opcional.
+          </p>
+        </form>
+      </section>
+    </main>
+
+    <script is:inline define:vars={{ WHATSAPP_NUMBER }}>
+      const form = document.getElementById("diagnosticForm");
+      const pref = document.getElementById("contactPreference");
+      const label = document.getElementById("contactValueLabel");
+      const contact = document.getElementById("contactValue");
+
+      function buildMessage() {
+        const fd = new FormData(form);
+
+        const negocio = fd.get("Tipo de negocio") || "-";
+        const objetivos = fd.getAll("Objetivo");
+        const estado = fd.get("Estado actual") || "-";
+        const urgencia = fd.get("Urgencia") || "-";
+        const nombre = fd.get("Nombre") || "-";
+        const prefVal = fd.get("Preferencia de contacto") || "email";
+        const contacto = fd.get("Contacto") || "-";
+        const notas = (fd.get("Notas") || "").toString().trim();
+
+        if (!objetivos.length) return null;
+
+        const lines = [
+          "Hola, quiero un diagnóstico gratuito.",
+          "",
+          `• Nombre: ${nombre}`,
+          `• Negocio: ${negocio}`,
+          `• Objetivo(s): ${objetivos.join(", ")}`,
+          `• Estado: ${estado}`,
+          `• Urgencia: ${urgencia}`,
+          `• Preferencia: ${prefVal === "whatsapp" ? "WhatsApp" : "Email"}`,
+          `• Contacto: ${contacto}`,
+          ...(notas ? ["", `• Notas: ${notas}`] : []),
+        ];
+
+        return lines.join("\n");
+      }
+
+      function syncContactUI() {
+        const v = pref.value;
+        if (v === "whatsapp") {
+          label.textContent = "Tu WhatsApp";
+          contact.placeholder = "Ej: 7012 3456";
+          contact.type = "tel";
+          
+        } else {
+          label.textContent = "Tu email";
+          contact.placeholder = "correo@dominio.com";
+          contact.type = "email";
+          
+        }
+      }
+
+      pref.addEventListener("change", syncContactUI);
+      syncContactUI();
+
+      waBtn.addEventListener("click", () => {
+        // Validación nativa primero
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        const msg = buildMessage();
+        if (!msg) {
+          alert("Por favor marca al menos 1 objetivo.");
+          return;
+        }
+
+        const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+        window.open(url, "_blank", "noopener,noreferrer");
+      });
+
+      // Nota: el submit normal va a Formspree (email).
+      // No abrimos WhatsApp automáticamente para respetar tu decisión de email-first.
+      form.addEventListener("submit", (e) => {
+        const fd = new FormData(form);
+        if (!fd.getAll("Objetivo").length) {
+          e.preventDefault();
+          alert("Por favor marca al menos 1 objetivo.");
+        }
+      });
+    </script>
+  </body>
+</html>
