@@ -88,7 +88,7 @@ export const proyects = [
     problem:"Pedidos por WhatsApp gestionados manualmente, generando retrasos y errores.",
     solution: "Sistema de pedidos que genera órdenes automáticas de WhatsApp desde un menú digital.",
     link:"/proyectos/tacoExpress",
-    img:"../../src/assets/taco-express.jpg",
+    img:"/src/assets/taco-express.jpg",
     badge:"Restaurante"
     
     

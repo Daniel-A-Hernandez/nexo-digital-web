@@ -30,7 +30,7 @@ export default function Navbar() {
         {/* Logo */}
         <a
           href="/"
-          class="flex items-center gap-4 rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-200"
+          class="flex items-center gap-4 rounded-xl"
           aria-label="Ir al inicio"
         >
           <img src={logo.src} alt="Logo Nexo Digital" class="w-10" />
@@ -60,8 +60,7 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          class="sm:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition
-                 focus:outline-none focus:ring-4 focus:ring-blue-200"
+          class="sm:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition"
           aria-label="Abrir menú"
           aria-expanded={open}
           onClick={() => setOpen(!open)}
@@ -106,7 +105,6 @@ export default function Navbar() {
                   onClick={() => setOpen(false)}
                 >
                   Trabajos
-                  <span class="text-slate-400">→</span>
                 </a>
               </li>
 
@@ -117,7 +115,6 @@ export default function Navbar() {
                   onClick={() => setOpen(false)}
                 >
                   Cotiza tu proyecto
-                  <span class="text-slate-400">→</span>
                 </a>
               </li>
             </ul>
