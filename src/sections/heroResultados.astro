@@ -2,57 +2,72 @@
 import { ArrowRight } from "@lucide/astro";
 ---
 
-
-
-<section class="relative min-h-screen bg-gradient-to-b from-blue-50 to-white" data-reveal>
-  <div class="mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 text-center">
-    <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
-      Hago que tu negocio sea <br/>
-      <span class="text-blue-600">más eficiente y rentable</span> con tecnología.
-    </h1>
-
-    <p class="text-xl text-slate-600 mb-10 max-w-2xl mx-auto">
-      No solo hago páginas web; construyo las herramientas digitales que tu empresa necesita para dejar de perder tiempo y empezar a crecer.
-    </p>
-
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a
-        href="/form"
-        class="reveal reveal--left bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition-all flex items-center justify-center gap-2 shadow-lg hover:cursor-pointer"
-        data-reveal
-        style="transition-delay: .05s"
-      >
-        Quiero un diagnóstico
-        <ArrowRight class="w-5 h-5" />
-      </a>
-
-      <a
-        href="/proyectos"
-        class="reveal reveal--right bg-white border-2 border-slate-200 text-slate-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all hover:cursor-pointer"
-        data-reveal
-        style="transition-delay: .12s"
-      >
-        Ver ejemplos reales
-      </a>
-    </div>
+<header class="relative overflow-hidden bg-gradient-to-b from-blue-50 to-white">
+  <!-- detalle visual muy sutil -->
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+    <div class="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-200/40 blur-3xl"></div>
   </div>
 
-  <!-- Indicador de scroll (opcional pero recomendado) -->
-  <a
-    href="#contenido"
-    class="absolute  bottom-3 left-1/2 -translate-x-1/2 text-slate-400 hover:text-slate-600 transition"
-    aria-label="Bajar a ver más contenido"
-  >
-    <span class="inline-flex flex-col items-center gap-2 pt-5">
-      <span class="text-sm">Desliza</span>
-      <span class="block h-8 w-5 rounded-full border-2 border-current relative">
-        <span class="absolute left-1/2 top-2 h-2 w-1 -translate-x-1/2 rounded-full bg-current animate-bounce"></span>
-      </span>
-    </span>
-  </a>
-</section>
+  <main class="relative mx-auto flex min-h-[92vh] max-w-6xl items-center px-6 py-16 sm:py-20 lg:py-24" data-reveal>
+    <div class="mx-auto w-full max-w-3xl text-center">
+      <!-- opcional: badge minimal, no roba atención -->
+      <p class="mb-4 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-xs font-semibold text-slate-700 backdrop-blur">
+        <span class="h-2 w-2 rounded-full bg-blue-600"></span>
+        Nexo Digital · Soluciones a medida
+      </p>
 
-<!-- Tu siguiente sección arranca aquí -->
-<section id="contenido">
-  ...
-</section>
+      <h1 class="text-balance font-extrabold leading-[1.05] text-slate-900"
+          style="font-size: clamp(2.25rem, 4vw, 3.75rem);">
+        Hago que tu negocio sea
+        <span class="block text-blue-600">más eficiente y rentable</span>
+        con tecnología.
+      </h1>
+
+      <p class="mt-6 text-pretty text-slate-600 sm:text-xl">
+        No solo hago páginas web; construyo herramientas digitales para que tu empresa
+        deje de perder tiempo y empiece a crecer.
+      </p>
+
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+        <a
+          href="/form"
+          class="group inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-blue-600 px-7 py-4 text-base font-bold text-white shadow-lg shadow-blue-600/15 transition hover:bg-blue-700 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300 sm:w-auto"
+          data-reveal
+          style="transition-delay: .05s"
+          aria-label="Ir al formulario para solicitar un diagnóstico"
+        >
+          Quiero un diagnóstico
+          <ArrowRight class="h-5 w-5 transition group-hover:translate-x-0.5" />
+        </a>
+
+        <a
+          href="/proyectos"
+          class="inline-flex w-full items-center justify-center rounded-2xl border border-slate-200 bg-white px-7 py-4 text-base font-bold text-slate-800 transition hover:bg-slate-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-slate-200 sm:w-auto"
+          data-reveal
+          style="transition-delay: .12s"
+        >
+          Ver ejemplos reales
+        </a>
+      </div>
+
+      <!-- micro confianza: 1 línea, nada más -->
+      <p class="mt-6 text-sm text-slate-500">
+        Respondo en menos de 24 horas · Propuesta clara por fases
+      </p>
+    </div>
+
+    <!-- Scroll indicator: solo desktop para que no estorbe en móvil -->
+    <a
+      href="#contenido"
+      class="absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-slate-400 transition hover:text-slate-600 lg:block"
+      aria-label="Bajar a ver más contenido"
+    >
+      <span class="inline-flex flex-col items-center gap-2">
+        <span class="text-xs font-semibold tracking-wide">Desliza</span>
+        <span class="relative block h-9 w-6 rounded-2xl border-2 border-current">
+          <span class="absolute left-1/2 top-2 h-2 w-1 -translate-x-1/2 rounded-full bg-current animate-bounce"></span>
+        </span>
+      </span>
+    </a>
+  </main>
+</header>

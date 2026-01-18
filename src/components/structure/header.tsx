@@ -34,16 +34,16 @@ export default function Navbar() {
           aria-label="Ir al inicio"
         >
           <img src={logo.src} alt="Logo Nexo Digital" class="w-10" />
-          <span class="text-3xl font-bold tracking-tight text-[#0f172b]">
+          <h1 class="text-3xl font-extrabold tracking-tight text-[#0f172b]">
             Nexo <span class="text-blue-600">Digital</span>
-          </span>
+          </h1>
         </a>
 
         {/* Desktop menu */}
         <div class="hidden sm:flex items-center gap-2">
           <a
             href="/proyectos"
-            class="group relative rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors"
+            class="group relative rounded-xl px-3 py-2 text-md font-semibold text-slate-700 hover:text-blue-700 transition-colors"
           >
             Trabajos
             <span class="absolute left-3 right-3 -bottom-0.5 h-[2px] origin-left scale-x-0 bg-blue-600 transition-transform duration-200 group-hover:scale-x-100" />
@@ -51,7 +51,7 @@ export default function Navbar() {
 
           <a
             href="/form"
-            class="group relative rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 hover:text-blue-700 transition-colors"
+            class="group relative rounded-xl px-3 py-2 text-md font-semibold text-slate-700 hover:text-blue-700 transition-colors"
           >
             Cotiza tu proyecto
             <span class="absolute left-3 right-3 -bottom-0.5 h-[2px] origin-left scale-x-0 bg-blue-600 transition-transform duration-200 group-hover:scale-x-100" />
